@@ -21,12 +21,7 @@ public class Hold {
     }
 
     public int totalWeight() {
-        int summa = 0;
-        int indeksi = 0;
-        while (indeksi < this.suitcases.size()) {
-        summa += this.suitcases.get(indeksi).totalWeight();
-        indeksi++;
-        }
+        int summa = suitcases.stream().map(thing -> thing.totalWeight()).reduce(0, (thing1, thing2) -> thing1 + thing2);
         return summa;
     }
 
