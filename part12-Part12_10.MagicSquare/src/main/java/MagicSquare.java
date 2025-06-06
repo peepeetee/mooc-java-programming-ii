@@ -17,15 +17,58 @@ public class MagicSquare {
 
     // implement these three methods
     public ArrayList<Integer> sumsOfRows() {
-        return new ArrayList<>();
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int i = 0; i < square.length; i++) {
+            int sum = 0;
+            for (int j = 0; j < square[i].length; j++) {
+                sum += square[i][j];
+
+            }
+            result.add(sum);
+        }
+        return result;
     }
 
     public ArrayList<Integer> sumsOfColumns() {
-        return new ArrayList<>();
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int k = 0; k < getWidth(); k++) {
+            result.add(0);
+        }
+        for (int i = 0; i < getWidth(); i++) {
+            for (int j = 0; j < getHeight(); j++) {
+                int value = square[i][j];
+
+                result.set(j, result.get(j) + value);
+            }
+            ;
+        }
+        return result;
     }
 
     public ArrayList<Integer> sumsOfDiagonals() {
-        return new ArrayList<>();
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int k = 0; k < 2; k++) {
+            result.add(0);
+        }
+        for (int i = 0; i < getWidth(); i++) {
+            for (int j = 0; j < getHeight(); j++) {
+                int value = square[i][j];
+                if (i == j) {
+                    result.set(0, result.get(0) + value);
+                }
+            }
+            ;
+        }
+        for (int i = 0; i < getWidth(); i++) {
+            for (int j = 0; j < getHeight(); j++) {
+                int value = square[i][j];
+                if (i + j == getWidth() - 1) {
+                    result.set(1, result.get(1) + value);
+                }
+            }
+            ;
+        }
+        return result;
     }
 
     // ready-made helper methods -- don't touch these
